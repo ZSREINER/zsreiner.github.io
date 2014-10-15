@@ -1,0 +1,963 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>Skyhook Context Accelerator (Android)</title>
+
+</head>
+<body>
+<h1>Skyhook Context Accelerator (Android)</h1>
+
+<h2>Prerequisites</h2>
+
+<ul>
+<li>Supported on Android 2.2 (Froyo), 2.3.x (Gingerbread), 4.0.x (Ice Cream Sandwich), and 4.1.x/4.2.x (Jelly Bean), including forked platforms such as the Kindle Fire.</li>
+</ul>
+
+
+<h2>Installation</h2>
+
+<!--1. Download the [Context Accelerator SDK].-->
+
+
+<ol>
+<li>Open the zip file containing the Context Accelerator SDK.</li>
+<li>The accelerator library files are found in the <code>lib</code> directory of the SDK. Add all of the contents of this directory to the <code>libs</code> directory of your project.</li>
+<li><p>Add the accelerator service to your manifest.</p>
+
+<pre><code> &lt;application
+     ...
+
+     &lt;service
+         android:name="com.skyhookwireless.accelerator.AcceleratorService"
+         android:exported="false" /&gt;
+ &lt;/application&gt;
+</code></pre></li>
+<li><p>Add the required permissions to your manifest.</p>
+
+<pre><code> &lt;!-- used to communicate with Skyhook's servers --&gt;
+ &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+ &lt;!-- used to enable Wi-Fi, if disabled, for the duration of a location request --&gt;
+ &lt;uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /&gt;
+ &lt;!-- used to obtain information about the gWi-Fi environment --&gt;
+ &lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /&gt;
+ &lt;!-- used to obtain Wi-Fi or cellular based locations --&gt;
+ &lt;uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /&gt;
+ &lt;!-- used to access GPS location for hybrid location functionality --&gt;
+ &lt;uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /&gt;
+ &lt;!-- used to keep processor awake when receiving background updates --&gt;
+ &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+ &lt;!-- used to check network connection type to optimize performance --&gt;
+ &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /&gt;
+ &lt;uses-permission android:name="android.permission.READ_PHONE_STATE" /&gt;
+</code></pre></li>
+</ol>
+
+
+<h3>Using the Android Emulator</h3>
+
+<p>The Context Accelerator SDK will not be able to determine location using Wi-Fi or cellular beacons from the emulator because it is unable to scan for those signals. Because of that, its functionality will be limited on the emulator. In order to verify your integration of the SDK using the emulator, you may want to use the <code>requestIPLocation()</code> method call. The full functionality will work only on an Android device.</p>
+
+<h2>Initializing</h2>
+
+<h3>Import the SDK</h3>
+
+<p>Import the accelerator client and any other accelerator components where needed.</p>
+
+<pre><code>import com.skyhookwireless.accelerator.AcceleratorClient;
+</code></pre>
+
+<h3>Instantiate the accelerator client</h3>
+
+<p>Connect to the accelerator service, and wait for the connection to complete successfully before calling any of the other accelerator methods.</p>
+
+<pre><code>public class YourActivity
+    extends ...
+    implements ...
+               ConnectionCallbacks,
+               OnConnectionFailedListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        accelerator = new AcceleratorClient(this, yourKey, this, this);
+        accelerator.connect();
+    }
+
+    @Override
+    protected void onDestroy() {
+        ...
+
+        accelerator.disconnect();
+    }
+
+    @Override
+    public void onConnected() {
+        // It is now safe to call any of the demographic persona or IP
+        // location accelerator methods. Before calling any of the
+        // campaign monitoring methods, a pending intent first needs to
+        // be registered for campaign monitoring, and before calling the
+        // isMonitoringAllCampaigns() or getMonitoredCampaigns() methods,
+        // that registration must be complete.
+
+        handle successful connection...
+    }
+
+    @Override
+    public void onDisconnected() {
+        handle disconnection...
+    }
+
+    @Override
+    public void onConnectionFailed(int errorCode) {
+        handle connection failure...
+    }
+
+    private AcceleratorClient accelerator;
+}
+</code></pre>
+
+<h2>Demographic Personas</h2>
+
+<p>You can request a refresh of the demographic persona of the current user by calling <code>refreshPersona()</code>.</p>
+
+<p>Once the AcceleratorClient has been instantiated and onConnected has been called after connecting to the accelerator service, you can refresh the persona. The <code>onPersonaResult()</code> method is called when the refresh persona operation completes, whether it was successful or not.</p>
+
+<pre><code>accelerator.refreshPersona(new OnPersonaResultListener() {
+
+    @Override
+    public void onPersonaResult(int statusCode) {
+        if (statusCode == AcceleratorStatusCodes.SUCCESS) {
+            Persona persona = accelerator.getPersona();
+            process demographic persona...
+        } else {
+            handle failure...
+        }
+    }
+});
+</code></pre>
+
+<h3>Latest Persona</h3>
+
+<p>You can access the latest demographic persona at any time by calling the <code>getPersona()</code> method after AcceleratorClient has been instantiated and onConnected has been called after connecting to the accelerator service. If no persona is available, this method will return <code>null</code>.</p>
+
+<pre><code>Personsa persona = accelerator.getPersona();
+</code></pre>
+
+<p>The <code>Persona</code> object has the following demographic properties:</p>
+
+<ul>
+<li>age</li>
+<li>gender</li>
+<li>ethnicity</li>
+<li>income</li>
+<li>education</li>
+</ul>
+
+
+<p>Each of these properties is a <code>List</code> composed of <code>Demographic</code> objects, listed in a decreasing order of probability.</p>
+
+<p>For example, to list all the values for the current ethnicity persona:</p>
+
+<pre><code>Persona persona = accelerator.getPersona();
+
+for (Demographic demographic : persona.ethnicity) {
+    Log.d(TAG, "value:"+demographic.value
+               +" probability:"+demographic.probability
+               +" variance:"+demographic.variance);
+}
+</code></pre>
+
+<p>The result of the above code would print this:</p>
+
+<pre><code>value:white probability:0.65 variance: 0.1
+value:other probability:0.15 variance: 0.1
+value:black probability:0.12 variance: 0.1
+value:asian probability:0.8 variance: 0.1
+</code></pre>
+
+<p>Note that since the values are ordered by probability, you can simply grab the first element (index 0) from the list to get the most probable value for the current user.</p>
+
+<h3>Behaviors</h3>
+
+<p>In addition to the five demographic objects, <code>Persona</code> also includes a <code>behaviors</code> field.</p>
+
+<pre><code>Persona persona = accelerator.getPersona();
+
+for (Behavior behavior : persona.behaviors) {
+    Log.d(TAG, "id:"+behavior.id
+               +" name:"+behavior.name);
+}
+</code></pre>
+
+<p>The result of the above code would print something like this:</p>
+
+<pre><code>ID:12341318394918 name:auto intenders
+ID:1234131839491234 name:auto enthusiasts</pre></code>
+
+<h2>Campaign Monitoring</h2>
+
+<p>Before starting campaign monitoring you must register your pending intent so that you can be notified when the user enters or exits campaign venues when the app is in the background.</p>
+
+<pre><code>public class YourActivity
+    extends ...
+    Implements ...
+               ConnectionCallbacks,
+               OnConnectionFailedListener,
+               OnRegisterForCampaignMonitoringResultListener {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        ...
+
+        accelerator = new AcceleratorClient(this, yourKey, this, this);
+        accelerator.connect();
+    }
+
+    @Override
+    public void onConnected() {
+        ...
+
+        Intent intent = new Intent(this, YourAcceleratorIntentService.class);
+        PendingIntent pendingIntent =
+            PendingIntent.getService(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        accelerator.registerForCampaignMonitoring(pendingIntent, this);
+    }
+
+    @Override
+    public void onRegisterForCampaignMonitoringResult(int statusCode,
+                                                      PendingIntent pendingIntent) {
+
+        // The isMonitoringAllCampaigns and getMonitoredCampaigns methods
+        // can also be called here if desired.
+        accelerator.startMonitoringForAllCampaigns(new OnStartCampaignMonitoringResultListener() {
+            @Override
+            public void onStartCampaignMonitoringResult(int statusCode, String campaignName) {
+                // On success, calls to isMonitoringAllCampaigns or
+                // getMonitoredCampaigns will now reflect that this campaign
+                // was started.
+            }
+        });
+    }
+}
+</code></pre>
+
+<p>Once you start monitoring for campaign alerts, accelerator will send an alert using the provided pending intent when a campaign venue is entered or exited. An easy way to handle these alerts is to create an intent service to receive them.</p>
+
+<pre><code>public class YourAcceleratorIntentService
+    extends IntentService {
+
+    public YourAcceleratorIntentService() {
+        super("YourAcceleratorIntentService");
+    }
+
+    protected void onHandleIntent(Intent intent) {
+
+        if (AcceleratorClient.hasError(intent)) {
+            int errorCode = AcceleratorClient.getErrorCode(intent);
+            handle error...
+        } else {
+            CampaignVenue venue = AcceleratorClient.getTriggeringCampaignVenue(intent);
+            if (venue != null) {
+                if (AcceleratorClient.getCampaignVenueTransition(intent)
+                        == CampaignVenue.CAMPAIGN_VENUE_TRANSITION_ENTER) {
+                    process enter transition...
+                } else {
+                    process exit transition...
+                }
+            }
+        }
+    }
+}
+</code></pre>
+
+<p>Add that intent service to your manifest.</p>
+
+<pre><code>&lt;application
+    ...
+
+    &lt;service
+        android:name=".YourAcceleratorIntentService"
+        android:exported="false" /&gt;
+&lt;/application&gt;
+</code></pre>
+
+<p>For most apps the <code>startMonitoringForAllCampaigns()</code> method is all that is needed for starting monitoring, but if more control is required, then your app can instead start monitoring for individual campaigns (assuming that the current class implements the <code>OnStartCampaignMonitoringResultListener</code> interface).</p>
+
+<pre><code>accelerator.startMonitoringForCampaign("YourCampaignName1", this);
+accelerator.startMonitoringForCampaign("YourCampaignName2", this);
+accelerator.startMonitoringForCampaign("YourCampaignName3", this);
+</code></pre>
+
+<p>When monitoring for individual campaigns, you can stop monitoring ones that are no longer needed (assuming that the current class implements the <code>OnStopCampaignMonitoringResultListener</code> interface).</p>
+
+<pre><code>accelerator.stopMonitoringForCampaign("YourCampaignName2", this);
+</code></pre>
+
+<p><strong>Note that if all campaigns are being monitored, then calling <code>stopMonitoringForCampaign()</code> has no effect. It will not stop the specified campaign from being monitored.</strong></p>
+
+<p>Or you can stop monitoring for all campaigns, whether individual campaigns or all of them are being monitored (assuming that the current class implements the <code>OnStopCampaignMonitoringResultListener</code> interface).</p>
+
+<pre><code>accelerator.stopMonitoringForAllCampaigns(this);
+</code></pre>
+
+<p>To resume campaign monitoring after a device reboot, add this to your manifest to listen for the BOOT_COMPLETED action.</p>
+
+<pre><code>&lt;application
+    ...
+
+    &lt;receiver android:name=".YourBootReceiver"&gt;
+        &lt;intent-filter&gt;
+            &lt;action android:name="android.intent.action.BOOT_COMPLETED"&gt;
+            &lt;/action&gt;
+        &lt;/intent-filter&gt;
+    &lt;/receiver&gt;
+&lt;/application&gt;
+</code></pre>
+
+<p>Add the appropriate permission to your manifest.</p>
+
+<pre><code>&lt;uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /&gt;
+</code></pre>
+
+<p>Then when that action is received, resume campaign monitoring by calling <code>registerForCampaignMonitoring()</code>, but <strong>do not call connect</strong> from the <code>BroadcastReceiver</code>.</p>
+
+<pre><code>public class YourBootReceiver
+    extends BroadcastReceiver
+    implements ...
+               ConnectionCallbacks,
+               OnConnectionFailedListener,
+               OnRegisterForCampaignMonitoringResultListener {
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+        Intent myIntent = new Intent(context, YourAcceleratorIntentService.class);
+        PendingIntent pendingIntent =
+            PendingIntent.getService(context, 0, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AcceleratorClient accelerator = new AcceleratorClient(context, yourKey, this, this);
+        accelerator.registerForCampaignMonitoring(pendingIntent, this);
+    }
+
+    @Override
+    public void onConnected() {
+    }
+
+    @Override
+    public void onDisconnected() {
+    }
+
+    @Override
+    public void onConnectionFailed(int errorCode) {
+    }
+
+    @Override
+    public void onRegisterForCampaignMonitoringResult(int statusCode,
+                                                      PendingIntent pendingIntent) {
+    }
+}
+</code></pre>
+
+<h2>IP Location</h2>
+
+<p>The Context Accelerator SDK can also be used to give you on-demand IP locations using the requesting remote IP once the AcceleratorClient has been instantiated and onConnected has been called after connecting to the accelerator service.</p>
+
+<pre><code>accelerator.requestIPLocation(new IPLocationListener() {
+
+    @Override
+    public void onIPLocationDetermined(Location location) {
+
+        // Note that location will never be null
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+        long systemTime = location.getTime();
+
+        // Note that extras will never be null
+        Bundle extras = location.getExtras();
+
+        // This extra is always present
+        long elapsedRealtimeMillis = extras.getLong("elapsedRealtimeMillis");
+
+        process latitude, longitude, systemTime, and elapsedRealtimeMillis...
+
+        if (location.hasAccuracy()) {
+            float accuracy = location.getAccuracy();
+            process accuracy...
+        }
+
+        if (location.hasAltitude()) {
+            double altitude = location.getAltitude();
+            process altitude...
+        }
+
+        IPLocationType type = (IPLocationType) extras.get("type");
+        if (type != null &amp;&amp; type != IPLocationType.UNKNOWN) {
+            process IP type...
+        }
+
+        StreetAddress streetAddress = (StreetAddress) extras.get("streetAddress");
+        if (streetAddress != null) {
+            String postalCode = streetAddress.postalCode;
+            if (postalCode != null) {
+                process postal code...
+            }
+        }
+    }
+
+    @Override
+    public void onIPLocationError(int errorCode) {
+        handle IP location failure...
+    }
+});
+</code></pre>
+
+<p>If successful, the onIPLocationDetermined method will be called with an Android <code>Location</code> object which contains some extras that are specific to IP locations. All IP locations generated by accelerator are guaranteed to have a valid latitude, longitude, and timestamp (both UTC time and elapsed real-time in milliseconds, not nanoseconds, since boot). All other properties are optional.</p>
+
+<p>The IP location properties are as follows:</p>
+
+<h3>IPLocation</h3>
+
+<p>Required properties:</p>
+
+<table>
+<thead>
+<tr>
+<th>Method Name </th>
+<th> Property Type </th>
+<th> Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getLatitude() </td>
+<td> double </td>
+<td> latitude, in degrees</td>
+</tr>
+<tr>
+<td>getLongitude() </td>
+<td> double </td>
+<td> longitude, in degrees</td>
+</tr>
+<tr>
+<td>getTime() </td>
+<td> long </td>
+<td> UTC time of this fix, in milliseconds since January 1, 1970</td>
+</tr>
+</tbody>
+</table>
+
+
+<table>
+<thead>
+<tr>
+<th>Extra Name </th>
+<th> Property Type </th>
+<th> Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>elapsedRealtimeMillis </td>
+<td> long </td>
+<td> time of this fix in milliseconds, in elapsed real-time since system boot</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>Optional properties:</p>
+
+<table>
+<thead>
+<tr>
+<th>Method Name </th>
+<th> Property Type </th>
+<th> Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getAccuracy() </td>
+<td> float </td>
+<td> horizontal accuracy if available, in meters.</td>
+</tr>
+<tr>
+<td>getAltitude() </td>
+<td> double </td>
+<td> altitude if available, in meters above sea level</td>
+</tr>
+</tbody>
+</table>
+
+
+<table>
+<thead>
+<tr>
+<th>Extra Name </th>
+<th> Property Type </th>
+<th> Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type </td>
+<td> <a href="#ip_location_type">IPLocationType</a> </td>
+<td> type of IP address if available</td>
+</tr>
+<tr>
+<td>streetAddress </td>
+<td> StreetAddress </td>
+<td> street address if available, currently only postalCode is populated</td>
+</tr>
+</tbody>
+</table>
+
+
+<!--
+####<a id="location_accuracy_indicator"></a>AccuracyIndicator####
+Value | Radius
+------|-------
+UNKNOWN | n/a
+VENUE | 100 m
+BLOCK | 500 m
+NEIGHBORHOOD | 1 km
+ZIP | 5 km
+CITY | 10 km
+MSA | 50 km
+DMA | 100 km
+STATE | 500 km
+REGION | 1,000 km
+COUNTRY | > 1,000 km
+-->
+
+
+<h4><a id="ip_location_type"></a>IPLocationType</h4>
+
+<table>
+<thead>
+<tr>
+<th>Value </th>
+<th> Definiton</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIXED </td>
+<td> fixed IP address</td>
+</tr>
+<tr>
+<td>MOBILE </td>
+<td> mobile IP address</td>
+</tr>
+<tr>
+<td>UNKNOWN </td>
+<td> unable to resolve type of IP</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Venue Information</h2>
+<p> The Context Accelerator SDK provides a collection of methods for obtaining venue information related to your campaigns and location.</p>
+
+<h3>Nearby Monitored Venues</h3>
+<p>The <code>fetchNearbyMonitoredVenues</code> method allows the client to obtain the unique identifiers of nearby venues that are part of actively monitored campaigns. This method can be used in conjunction with the <code>fetchVenueInfo</code> method to obtain more detailed venue information. This method can be called once the AcceleratorClient has been instantiated and onConnected has been called after connecting to the accelerator service. The client should be registered for campaign monitoring prior to calling this method</p>
+
+<pre><code>accelerator.fetchNearbyMonitoredVenues(
+    100,
+    new NearbyMonitoredVenuesListener()
+    {
+        @Override
+        public void onNearbyMonitoredVenuesFetched(final List&lt;NearbyCampaignVenue&gt; venues)
+        {
+            // handle nearby venues...
+        }
+
+        @Override
+        public void onNearbyMonitoredVenuesError(final int errorCode)
+        {
+            // handle fetch venue info error...
+        }
+    }
+);
+</pre></code>
+
+<h3>Venue Information by unique identifer</h3>
+
+<p>The <code>fetchVenueInfo</code> method allows the client to obtain more detailed venue information using the unqiue venue identifiers from the <code>CampaignVenue</code> and <code>NearbyCampaignVenue</code> objects. This method can be called once the AcceleratorClient has been instantiated and onConnected has been called after connecting to the accelerator service. The client should be registered for campaign monitoring prior to calling this method</p>
+
+<pre><code>@Override
+public void onNearbyMonitoredVenuesFetched(List<NearbyCampaignVenue> venues)
+{
+    // Fetch venue information for nearby venues
+
+    final List&lt;Long&gt; ids = new ArrayList&lt;Long&gt;(venues.size());
+    for (NearbyCampaignVenue venue : venues)
+        ids.add(venue.venueId);
+
+    accelerator.fetchVenueInfo(ids,
+                               new VenueInfoListener()
+                               {
+                                   @Override
+                                   public void onVenueInfoFetched(List&lt;VenueInfo&gt; venues)
+                                   {
+                                       // handle venue information...
+                                   }
+                                    
+                                   @Override
+                                   public void onVenueInfoError(int errorCode)
+                                   {
+                                       // handle fetch venue info error...
+                                   }
+                               });
+    ...
+</code></pre>
+
+<h3>Venue Information at the current location</h3>
+
+<p>The <code>fetchVenueInfoAtLocation</code> method allows the client to request the venue information at the current user location. This method can be called once the AcceleratorClient has been instantiated and onConnected has been called after connecting to the accelerator service.<p>
+
+<pre><code>accelerator.fetchVenueInfoAtLocation(
+    new VenueInfoListener()
+    {
+        @Override
+        public void onVenueInfoFetched(List&lt;VenueInfo&gt; venues)
+        {
+            // handle venue information...
+        }
+
+        @Override
+        public void onVenueInfoError(int errorCode)
+        {
+            // handle fetch venue info error...
+        }
+    }
+);
+</code></pre>
+
+<h2>Privacy Considerations</h2>
+
+<p>The Context Accelerator SDK collects certain usage information in order to improve the quality of Skyhook’s positioning and context products. Skyhook does not collect any personally identifiable information (PII) and uses the Android ID as an anonymous identifier. Additional information is available in the Context Accelerator SDK <a href="http://www.skyhookwireless.com/privacy-policy/context-privacy-policy/">Privacy Policy</a>.</p>
+
+<p>In addition to Skyhook’s default privacy protections, developers integrating the Context Accelerator SDK are required to allow application users to opt out of usage data collection. Note that the application may receive degraded context information if data collection is disabled.</p>
+
+<p>To disable usage collection:</p>
+
+<pre><code>accelerator.setUsageCollectionEnabled(false);
+</code></pre>
+
+<p>You can check the data collection status anytime with:</p>
+
+<pre><code>boolean isDataCollectionActive = accelerator.isUsageCollectionEnabled();
+</code></pre>
+
+<p>or re-enable it with:</p>
+
+<pre><code>accelerator.setUsageCollectionEnabled(true);
+</code></pre>
+
+<!-- these should point to actual locations -->
+
+</body>
+</html>
